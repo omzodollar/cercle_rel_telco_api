@@ -1,0 +1,37 @@
+package com.sn.atos.controller;
+
+import java.util.Collection;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.sn.atos.entities.Subscriber;
+import com.sn.atos.repositories.SubscriberRepository;
+import com.sn.atos.services.MovieService;
+import com.sn.atos.services.SubscriberService;
+
+@RestController
+@RequestMapping("/")
+public class SubscriberController {
+	
+	private  SubscriberService subscriberService;
+	public SubscriberController(SubscriberService subscriberService) {
+		this.subscriberService = subscriberService;
+	}
+	
+	@GetMapping("/subscribers")
+	@ResponseBody 
+	public Collection<Subscriber> getAllSubscriber(){
+		return subscriberService.getAllSubscriber();
+     }
+	@GetMapping("/searchSubscriber")
+	@ResponseBody 
+	public Subscriber findByNumero(@RequestParam(value = "numero",required = false) String numero){
+		return subscriberService.searchByNumero(numero);
+     }
+	
+} 
