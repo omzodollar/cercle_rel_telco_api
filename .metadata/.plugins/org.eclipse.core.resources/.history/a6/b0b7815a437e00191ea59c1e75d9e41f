@@ -1,0 +1,58 @@
+package com.sn.atos.services;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.sn.atos.entities.Appel;
+import com.sn.atos.entities.Movie;
+import com.sn.atos.entities.Role;
+import com.sn.atos.entities.Subscriber;
+import com.sn.atos.repositories.AppelRepository;
+import com.sn.atos.repositories.SubscriberRepository;
+
+@Service
+public class AppelService {
+	@Autowired 
+	AppelRepository appelRepository;
+	
+	public Collection<Appel> getAllAppel(){
+		return appelRepository.getAll();
+	}
+
+	/*private Map<String, Object> toD3Format(Collection<Appel> appels) {
+		List<Map<String, Object>> nodes = new ArrayList<>();
+		List<Map<String, Object>> rels = new ArrayList<>();
+		int i = 0;
+		Iterator<Appel> result = appels.iterator();
+		while (result.hasNext()) {
+			Appel appel = result.next(); 
+			nodes.add(map("Numero", appel.getSource().getNumero(), "label", "source"));
+			int target = i;
+			i++;
+			for (Appel appel: appel.getRoles()) {
+				Map<String, Object> actor = map("title", role.getPerson().getName(), "label", "actor");
+				int source = nodes.indexOf(actor);
+				if (source == -1) {
+					nodes.add(actor);
+					source = i++;
+				}
+				rels.add(map("source", source, "target", target));
+			}
+		}
+		return map("nodes", nodes, "links", rels);
+	}
+
+	private Map<String, Object> map(String key1, Object value1, String key2, Object value2) {
+		Map<String, Object> result = new HashMap<String, Object>(2);
+		result.put(key1, value1);
+		result.put(key2, value2);
+		return result;
+	}*/
+}

@@ -1,0 +1,25 @@
+package com.sn.atos.services;
+
+import java.util.Collection;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.sn.atos.entities.Subscriber;
+import com.sn.atos.repositories.SubscriberRepository;
+
+@Service
+public class SubscriberService {
+	@Autowired 
+	SubscriberRepository subscriberRepository;
+	
+	public Collection<Subscriber> getAllSubscriber(){
+		return subscriberRepository.getAll();
+	}
+<<<<<<< HEAD
+=======
+	public Subscriber searchByNumero(String numero){
+		return subscriberRepository.findByNumero( numero);
+	}
+>>>>>>> recherche
+}

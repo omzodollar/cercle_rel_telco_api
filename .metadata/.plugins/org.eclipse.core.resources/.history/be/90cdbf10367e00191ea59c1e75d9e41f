@@ -1,0 +1,36 @@
+package com.sn.atos.controller;
+
+import java.util.Collection;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.sn.atos.entities.Appel;
+import com.sn.atos.entities.Subscriber;
+import com.sn.atos.repositories.AppelRepository;
+import com.sn.atos.repositories.SubscriberRepository;
+import com.sn.atos.services.MovieService;
+import com.sn.atos.services.SubscriberService;
+
+@RestController
+@RequestMapping("/")
+public class AppelController {
+	
+	private  AppelRepository appelRepository;
+	public AppelController(AppelRepository appelRepository) {
+		this.appelRepository = appelRepository;
+	}
+	
+	@GetMapping("/appels")
+	@ResponseBody 
+	public Collection<Appel> getAllSubscriber(){
+		return appelRepository.getAll();
+     }
+
+	
+	
+} 

@@ -1,0 +1,37 @@
+package com.sn.atos.entities;
+
+import java.util.ArrayList;
+
+import java.util.Collection;
+
+import java.util.List;
+
+import org.neo4j.ogm.annotation.EndNode;
+import org.neo4j.ogm.annotation.GeneratedValue;
+import org.neo4j.ogm.annotation.Id;
+import org.neo4j.ogm.annotation.RelationshipEntity;
+import org.neo4j.ogm.annotation.StartNode;
+
+@RelationshipEntity(type = "Appel")
+public class Appel {
+		@GeneratedValue
+		@Id
+		private long id;
+	    private long nombreappel;
+	    private long dureeappel;
+
+		
+
+		private List<String> appels = new ArrayList<>();
+
+	    @StartNode
+		private Subscriber source ;
+
+		@EndNode
+		private Subscriber destinataire;
+
+		
+
+	}
+
+
